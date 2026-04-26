@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="SNP — Quantamental research portfolio. Project Goldstein (geopolitical variance signal) and the CHC Platform (human capital due diligence). Penn State University.">
+<meta name="author" content="Pratham N. Shah">
+<meta name="theme-color" content="#EDE5D0">
+<meta property="og:title" content="SNP · Research">
+<meta property="og:description" content="Quantamental research at the intersection of geopolitics, human capital, and market variance.">
+<meta property="og:type" content="website">
+<title>SNP · Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p:#EDE5D0;--pd:#E0D8C3;--bg:#faf9f5;
+  --ink:#111008;--ash:#55504A;--gh:#7A766E;
+  --cr:#7A1515;--go:#B8922A;--sl:#1C1C18;
+  --good:#2A6E2A;
+  --serif:'EB Garamond',Georgia,serif;
+  --mono:'Courier New',Courier,monospace;
+  --pad:52px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%;display:block}
+button{font:inherit}
+
+/* utility view toggle */
+.view{display:none;animation:fade .35s ease}
+.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* top disclaimer */
+.top-disclaimer{background:var(--p);border-bottom:1px solid rgba(17,16,8,.12);padding:10px var(--pad);font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ash);text-align:center;line-height:1.5}
+
+/* nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(237,229,208,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(17,16,8,.1);padding:0 var(--pad);height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-wordmark{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink);cursor:pointer;background:none;border:none}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links button,.nav-links a{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash);background:none;border:none;cursor:pointer;transition:color .15s;padding:0}
+.nav-links button:hover,.nav-links a:hover,.nav-links .is-active{color:var(--cr)}
+.nav-cta{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;background:transparent;color:var(--cr);border:1px solid var(--cr);padding:6px 16px;cursor:pointer;transition:background .15s,color .15s}
+.nav-cta:hover{background:var(--cr);color:var(--p)}
+
+/* hero */
+.hero{min-height:92vh;padding:140px var(--pad) 96px;display:flex;align-items:flex-end;border-bottom:1px solid rgba(17,16,8,.1);position:relative}
+.hero-inner{max-width:880px}
+.hero-kicker{font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--ash);margin-bottom:32px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hero-kicker::before{content:'';width:32px;height:1px;background:var(--ash);flex:none}
+.hero-title{font-size:clamp(40px,6.2vw,82px);line-height:1.03;letter-spacing:-.015em;color:var(--ink);margin-bottom:36px}
+.hero-title em{font-style:italic}
+.hero-body{font-size:18px;line-height:1.8;color:var(--ash);max-width:580px;margin-bottom:48px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{height:44px;padding:0 28px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;border:none;display:inline-flex;align-items:center;justify-content:center}
+.btn-ink{background:var(--ink);color:var(--p);transition:background .2s}
+.btn-ink:hover{background:var(--cr)}
+.btn-outline{background:transparent;color:var(--ink);border:1px solid rgba(17,16,8,.22);transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--cr);color:var(--cr)}
+.hero-meta{position:absolute;top:140px;right:var(--pad);font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--ash);line-height:2.2;text-align:right}
+.status-badge{display:inline-block;font-family:var(--mono);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--go);border:1px solid var(--go);padding:3px 10px;margin-top:6px}
+
+/* sections */
+section{padding:96px var(--pad);border-bottom:1px solid rgba(17,16,8,.08)}
+.sec-label{font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--ash);margin-bottom:48px;display:flex;align-items:center;gap:14px}
+.sec-label::after{content:'';flex:1;height:1px;background:rgba(17,16,8,.1)}
+
+/* approach grid */
+.approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.approach-col h2{font-size:28px;color:var(--ink);margin-bottom:16px;line-height:1.2}
+.approach-col h2 em{font-style:italic}
+.approach-col p{font-size:16px;line-height:1.8;color:var(--ash);margin-bottom:16px}
+.approach-col p strong{color:var(--ink);font-weight:400;font-style:italic}
+.footnote{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--gh);margin-top:24px;border-top:1px solid rgba(17,16,8,.1);padding-top:14px}
+
+/* cell grids */
+.cell-grid{display:grid;gap:1px;background:rgba(17,16,8,.1)}
+.cell-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.cell-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+.cell-grid.cols-5{grid-template-columns:repeat(5,1fr)}
+.cell{background:var(--p);padding:32px 28px;transition:background .15s}
+.cell:hover{background:var(--pd)}
+.cell-num{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--gh);margin-bottom:14px}
+.cell-code{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--cr);margin-bottom:10px;font-weight:bold}
+.cell-title{font-size:18px;color:var(--ink);margin-bottom:10px;line-height:1.25}
+.cell-title em{font-style:italic}
+.cell-body{font-size:13.5px;line-height:1.75;color:var(--ash)}
+.cell-tag{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--go);margin-top:12px}
+
+/* dark sources panel */
+.sources-dark{background:var(--sl);padding:64px var(--pad);border-bottom:1px solid rgba(255,255,255,.05)}
+.sources-dark .sec-label{color:rgba(237,229,208,.4)}
+.sources-dark .sec-label::after{background:rgba(237,229,208,.08)}
+.sources-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.05)}
+.source-cell{background:var(--sl);padding:32px 28px;transition:background .15s}
+.source-cell:hover{background:#222220}
+.src-type{font-family:var(--mono);font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:rgba(160,152,144,.55);margin-bottom:12px}
+.src-name{font-size:16px;color:var(--p);line-height:1.25;margin-bottom:10px}
+.src-name em{font-style:italic;color:var(--cr)}
+.src-desc{font-size:13px;line-height:1.7;color:rgba(237,229,208,.5)}
+
+/* projects */
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(17,16,8,.1)}
+.project{background:var(--p);padding:52px 44px;transition:background .15s;display:flex;flex-direction:column}
+.project:not(.dark):hover{background:var(--pd)}
+.project.dark{background:var(--sl)}
+.project.dark:hover{background:#222220}
+.pj-roman{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--gh);margin-bottom:20px}
+.pj-title{font-size:30px;color:var(--ink);line-height:1.15;margin-bottom:8px}
+.pj-title em{font-style:italic}
+.pj-title-dk{font-size:30px;color:var(--p);line-height:1.15;margin-bottom:8px}
+.pj-title-dk em{font-style:italic;color:var(--cr)}
+.pj-tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);margin-bottom:24px}
+.pj-body{font-size:15px;line-height:1.8;color:var(--ash);max-width:440px;margin-bottom:28px}
+.pj-body-dk{font-size:15px;line-height:1.8;color:rgba(237,229,208,.55);max-width:440px;margin-bottom:28px}
+.pj-link{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--cr);text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:0;align-self:flex-start}
+.pj-link::after{content:'›';font-size:14px}
+.pj-stats{display:flex;gap:32px;margin-top:auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.07)}
+.pj-stat-val{font-family:var(--serif);font-size:26px;color:var(--go);line-height:1;margin-bottom:3px}
+.pj-stat-key{font-family:var(--mono);font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:rgba(160,152,144,.7)}
+
+/* impact stats */
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.impact-stat{border-left:2px solid var(--cr);padding-left:24px}
+.impact-val{font-family:var(--serif);font-size:52px;color:var(--ink);line-height:1;margin-bottom:6px}
+.impact-val em{font-style:italic;color:var(--cr)}
+.impact-label{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);margin-bottom:10px}
+.impact-desc{font-size:14px;line-height:1.7;color:var(--ash)}
+.impact-cite{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--gh);margin-top:8px}
+
+/* table */
+.results-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse}
+th{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ash);text-align:left;padding:8px 16px 8px 0;border-bottom:1px solid rgba(17,16,8,.15);font-weight:400;white-space:nowrap}
+td{font-size:14px;color:var(--ink);padding:12px 16px 12px 0;border-bottom:1px solid rgba(17,16,8,.07);font-variant-numeric:tabular-nums}
+tr:hover td{background:rgba(122,21,21,.03)}
+.td-sub{font-family:var(--mono);font-size:10px;color:var(--ash)}
+.td-good{color:var(--good)}
+.td-warn{color:var(--go)}
+.td-risk{color:var(--cr)}
+
+/* mini stat strip */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(17,16,8,.08);margin-top:32px}
+.stat-cell{background:var(--p);padding:24px 20px}
+.stat-num{font-family:var(--serif);font-size:32px;color:var(--ink);line-height:1;margin-bottom:6px}
+.stat-key{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ash)}
+
+/* contact */
+.contact{padding:80px var(--pad) 64px;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;border-top:1px solid rgba(17,16,8,.1)}
+.contact-left h2{font-size:32px;line-height:1.25;margin-bottom:14px}
+.contact-left h2 em{font-style:italic}
+.contact-left p{font-size:16px;line-height:1.8;color:var(--ash);max-width:480px}
+.contact-right{padding-top:8px}
+.contact-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ash);margin-bottom:12px}
+.contact-email{font-size:20px;color:var(--cr);display:block;text-decoration:none;margin-bottom:10px;transition:color .15s;word-break:break-all}
+.contact-email:hover{color:var(--ink)}
+.contact-note{font-size:13px;font-style:italic;color:var(--ash);line-height:1.7}
+
+/* footer */
+.footer-base{padding:20px var(--pad) 28px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(17,16,8,.08);gap:24px;flex-wrap:wrap}
+.footer-wordmark{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gh)}
+.footer-legal{font-family:var(--mono);font-size:8px;letter-spacing:.1em;color:var(--gh);max-width:540px;text-align:right;line-height:1.7}
+
+/* responsive */
+@media(max-width:960px){
+  :root{--pad:24px}
+  .nav-links{display:none}
+  .hero{padding:96px var(--pad) 64px;min-height:auto}
+  .hero-meta{display:none}
+  section{padding:64px var(--pad)}
+  .approach-grid,.impact-grid,.contact{grid-template-columns:1fr;gap:48px}
+  .cell-grid.cols-3,.cell-grid.cols-4,.cell-grid.cols-5,.sources-grid,.projects,.stat-strip{grid-template-columns:1fr}
+  .footer-base{flex-direction:column;align-items:flex-start}
+  .footer-legal{text-align:left}
+}
+@media(min-width:961px) and (max-width:1200px){
+  .cell-grid.cols-5{grid-template-columns:repeat(3,1fr)}
+  .cell-grid.cols-4,.sources-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* print */
+@media print{nav,.top-disclaimer,.hero-actions,.nav-cta{display:none}body{background:#fff}.view{display:block!important}}
+</style>
+</head>
+<body>
+
+<!-- DISCLAIMER -->
+<div class="top-disclaimer">
+  Personal academic research portfolio &nbsp;·&nbsp; Not investment advice &nbsp;·&nbsp; Not a solicitation &nbsp;·&nbsp; No services offered
+</div>
+
+<!-- NAV -->
+<nav>
+  <button class="nav-wordmark" data-view="home">SNP &nbsp;·&nbsp; Research</button>
+  <ul class="nav-links">
+    <li><button data-view="home">Home</button></li>
+    <li><button data-view="goldstein">Project Goldstein</button></li>
+    <li><button data-view="chc">CHC Platform</button></li>
+    <li><a href="#contact" data-scroll>Correspondence</a></li>
+  </ul>
+  <button class="nav-cta" data-scroll-to="contact">Write</button>
+</nav>
+
+<!-- ============================================================
+     HOME VIEW — portfolio overview
+============================================================ -->
+<main id="view-home" class="view active">
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Quantamental Research &nbsp;·&nbsp; Penn State University &nbsp;·&nbsp; MMXXVI</div>
+    <h1 class="hero-title">Quantifying the<br>risks that resist<br><em>quantification.</em></h1>
+    <p class="hero-body">
+      Two lines of research at the boundary where structured data meets unstructured risk.
+      Geopolitical event streams modelled as a variance input. Workforce health translated
+      into a scoreable due-diligence artefact. Different domains, the same discipline:
+      build a number where one did not previously exist, and validate it honestly.
+    </p>
+    <div class="hero-actions">
+      <button class="btn btn-ink" data-view="goldstein">Project Goldstein</button>
+      <button class="btn btn-outline" data-view="chc">CHC Platform</button>
+    </div>
+  </div>
+  <div class="hero-meta">
+    Pratham N. Shah<br>
+    Smeal College of Business<br>
+    Finance &amp; Data Science<br>
+    <span class="status-badge">Open to discussion</span>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="sec-label">Research Portfolio &nbsp;·&nbsp; Two Active Projects</div>
+  <div class="projects">
+    <div class="project dark">
+      <div class="pj-roman" style="color:rgba(160,152,144,.4)">Research · I</div>
+      <div class="pj-title-dk">Project <em>Goldstein</em></div>
+      <div class="pj-tag" style="color:rgba(160,152,144,.55)">Geopolitical Volatility Signal · 12 Regions · 2022–2026</div>
+      <p class="pj-body-dk">
+        A GRPS engine converting real-time geopolitical event streams (GDELT, ACLED) into
+        a single daily variance score per region. Tests whether conflict and instability
+        data predict variance — not direction — in linked sector ETFs.
+      </p>
+      <button class="pj-link" data-view="goldstein">View research</button>
+      <div class="pj-stats">
+        <div><div class="pj-stat-val">64.4%</div><div class="pj-stat-key">Hit rate</div></div>
+        <div><div class="pj-stat-val">0.23</div><div class="pj-stat-key">Spearman IC</div></div>
+        <div><div class="pj-stat-val">323</div><div class="pj-stat-key">Validated events</div></div>
+      </div>
+    </div>
+    <div class="project">
+      <div class="pj-roman">Research · II</div>
+      <div class="pj-title">CHC <em>Platform</em></div>
+      <div class="pj-tag">Private Equity · Human Capital · Mid-Market Diligence</div>
+      <p class="pj-body">
+        A sell-side diagnostic framework that converts workforce risk signals into a
+        composite Human Capital Volatility (HCV) score, delivered as a data-room
+        artefact before close. Five components, public-record anchored, sector-normalised.
+      </p>
+      <button class="pj-link" data-view="chc">View research</button>
+      <div class="pj-stats" style="border-top-color:rgba(17,16,8,.07)">
+        <div><div class="pj-stat-val" style="color:var(--cr)">5</div><div class="pj-stat-key" style="color:var(--gh)">Sub-components</div></div>
+        <div><div class="pj-stat-val" style="color:var(--cr)">4</div><div class="pj-stat-key" style="color:var(--gh)">Risk tiers</div></div>
+        <div><div class="pj-stat-val" style="color:var(--cr)">72h</div><div class="pj-stat-key" style="color:var(--gh)">Turnaround</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD CARD -->
+<section>
+  <div class="sec-label">Methodology &nbsp;·&nbsp; What both projects share</div>
+  <div class="approach-grid">
+    <div class="approach-col">
+      <h2>Build the number<br>before the <em>narrative.</em></h2>
+      <p>
+        Most risk discussion in finance and diligence terminates in qualitative output —
+        country ratings, analyst commentary, management bios. These outputs cannot be
+        backtested, compared across deals, or audited after the fact.
+      </p>
+      <p>
+        Both projects begin from the same constraint: <strong>produce a single, bounded,
+        sector-normalised score</strong> from inputs that are themselves messy, qualitative,
+        or partial. The score is the artefact. Everything else is supporting evidence.
+      </p>
+      <div class="footnote">Bounded score · Sector-normalised · Audit trail preserved</div>
+    </div>
+    <div class="approach-col">
+      <h2>Publish the<br><em>false positives.</em></h2>
+      <p>
+        Validation discipline is the differentiator. Goldstein publishes a 29.2% false
+        positive rate and a 252-day per-region warm-up exclusion. CHC explicitly disclaims
+        predictive ability and frames itself as a descriptive diagnostic.
+      </p>
+      <p>
+        Neither project claims more than the data supports. The bar for a published
+        coefficient is statistical significance after warmup exclusion. The bar for a
+        published score is documented methodology and a reproducible pipeline.
+      </p>
+      <div class="footnote">Out-of-sample validation · Documented limitations · Reproducible</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     GOLDSTEIN VIEW — geopolitical variance signal
+============================================================ -->
+<main id="view-goldstein" class="view">
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Project Goldstein &nbsp;·&nbsp; Geopolitical Volatility Signal</div>
+    <h1 class="hero-title">Geopolitical risk<br>is a <em>variance</em> input.<br>Model it as one.</h1>
+    <p class="hero-body">
+      Research at the intersection of geopolitical event data and financial volatility.
+      The central question: can real-time conflict and instability data predict changes in
+      market <em>variance</em> — not direction — in linked sector instruments?
+    </p>
+    <div class="hero-actions">
+      <button class="btn btn-ink" data-scroll-to="g-results">Validated Results</button>
+      <a class="btn btn-outline" href="https://github.com/prathamislit/Project-Goldstein" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </div>
+  <div class="hero-meta">
+    Quantamental Research<br>
+    Penn State University<br>
+    Finance &amp; Data Science<br>
+    <span class="status-badge">Methodology Published</span>
+  </div>
+</div>
+
+<section id="g-approach">
+  <div class="sec-label">Research Approach</div>
+  <div class="approach-grid">
+    <div class="approach-col">
+      <h2>The question most<br>models don't <em>ask.</em></h2>
+      <p>
+        Most geopolitical risk tools produce qualitative outputs — country ratings, analyst
+        commentary, narrative indexes. They are not designed to be integrated into a
+        quantitative risk framework because they produce no number that can be tested.
+      </p>
+      <p>
+        This research asks a different question: <strong>does geopolitical event data
+        predict variance increases in linked financial instruments?</strong> Not returns.
+        Not direction. Variance. The distinction matters because it determines whether the
+        signal is actionable or merely interesting.
+      </p>
+      <p>
+        The answer, across 12 global chokepoints and four years of data, is that it does —
+        with statistically significant coefficients and a validated hit rate that holds
+        out of sample.
+      </p>
+      <div class="footnote">Methodology document available on request · 2022–2026 · Penn State</div>
+    </div>
+    <div class="approach-col">
+      <h2>Signal construction<br>and <em>validation.</em></h2>
+      <p>
+        The Geopolitical Risk Premium Score (GRPS) is built from three components:
+        event-based instability drawn from GDELT and ACLED, sector volatility premium
+        measured against rolling benchmarks, and VIX z-score conditioning for macro
+        fear regime.
+      </p>
+      <p>
+        Each region runs through a <strong>252-day warm-up period</strong> before any
+        score is issued. No regime label is published until the full validation window
+        closes. The false positive rate — 29.2% — is included in every summary. It is not
+        withheld.
+      </p>
+      <p>
+        The scoring engine is not included in the public repository. The data pipeline,
+        fetchers, quality checks, and backtest framework are open and documented.
+      </p>
+      <div class="footnote">github.com/prathamislit/Project-Goldstein · GDELT BigQuery · ACLED API</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;border-bottom:1px solid rgba(17,16,8,.08)">
+  <div class="cell-grid cols-3">
+    <div class="cell">
+      <div class="cell-num">Finding I.</div>
+      <div class="cell-title" style="font-size:20px">Geopolitical events<br>move <em>volatility,</em> not returns.</div>
+      <p class="cell-body">Across all 12 regions tested, γ coefficients for the geopolitical-to-variance relationship range from 0.784 to 0.934. No statistically significant return-prediction relationship was found. The variance channel is the operative one.</p>
+    </div>
+    <div class="cell">
+      <div class="cell-num">Finding II.</div>
+      <div class="cell-title" style="font-size:20px">The signal holds<br><em>out of sample.</em></div>
+      <p class="cell-body">323 threshold-crossing events validated across a 21-day forward window. Average hit rate for volatility exceeding the 75th percentile post-crossing: 64.4%. The signal does not decay upon publication — it measures a structural regime, not an inefficiency.</p>
+    </div>
+    <div class="cell">
+      <div class="cell-num">Finding III.</div>
+      <div class="cell-title" style="font-size:20px">Chokepoint selection<br><em>determines proxy.</em></div>
+      <p class="cell-body">The ETF proxy must be chosen to isolate region-specific exposure. Early iterations using XLE for multiple regions produced mathematically identical signals. Each of the 12 final proxies was selected to maximise independence and specificity of the geopolitical channel.</p>
+    </div>
+    <div class="cell">
+      <div class="cell-num">Finding IV.</div>
+      <div class="cell-title" style="font-size:20px">Regime classification<br>is <em>sufficient.</em></div>
+      <p class="cell-body">The continuous 0–100 score adds less information than the three-regime classification (STABLE · ELEVATED · CRITICAL) for practical risk management. The regime label is the actionable output. The score is the audit trail.</p>
+    </div>
+    <div class="cell">
+      <div class="cell-num">Finding V.</div>
+      <div class="cell-title" style="font-size:20px">VIX conditioning<br><em>matters.</em></div>
+      <p class="cell-body">Incorporating VIX z-score as a macro fear conditioning variable reduced false positives by approximately 8 percentage points versus the unconditioned model. Global fear regime modulates how much geopolitical event data translates into sector-specific variance pressure.</p>
+    </div>
+    <div class="cell">
+      <div class="cell-num">Finding VI.</div>
+      <div class="cell-title" style="font-size:20px">Warm-up exclusion<br>is <em>non-negotiable.</em></div>
+      <p class="cell-body">The first 252 trading days per region are excluded from all validation — no exceptions. Models evaluated before sufficient data accumulation produce inflated coefficients. Published results reflect only the post-warmup window.</p>
+    </div>
+  </div>
+</section>
+
+<section id="g-results">
+  <div class="sec-label">Validated Results &nbsp;·&nbsp; 2022–2026</div>
+  <div class="results-wrap">
+    <table>
+      <thead>
+        <tr><th>Region</th><th>ETF Proxy</th><th>γ (geo → variance)</th><th>p-value</th><th>Rationale</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Middle East</td><td class="td-sub">XLE</td><td>0.934</td><td class="td-sub">&lt; 0.001</td><td class="td-sub">Energy sector — direct oil supply exposure</td></tr>
+        <tr><td>Eastern Europe</td><td class="td-sub">XME</td><td>0.918</td><td class="td-sub">&lt; 0.001</td><td class="td-sub">Metals &amp; mining — commodity shock channel</td></tr>
+        <tr><td>Taiwan Strait</td><td class="td-sub">SOXX</td><td>0.897</td><td class="td-sub">&lt; 0.001</td><td class="td-sub">Semiconductors — TSMC supply chain risk</td></tr>
+        <tr><td style="color:var(--ash);font-style:italic" colspan="2">Remaining 9 regions</td><td style="color:var(--ash);font-style:italic">—</td><td style="color:var(--ash);font-style:italic">—</td><td class="td-sub" style="font-style:italic">90-day post-warmup validation window in progress</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="stat-strip">
+    <div class="stat-cell"><div class="stat-num">64.4%</div><div class="stat-key">Avg hit rate · vol &gt; 75th pct</div></div>
+    <div class="stat-cell"><div class="stat-num">29.2%</div><div class="stat-key">Avg false positive rate</div></div>
+    <div class="stat-cell"><div class="stat-num">0.23</div><div class="stat-key">Avg Spearman IC</div></div>
+    <div class="stat-cell"><div class="stat-num">323</div><div class="stat-key">Validated crossing events</div></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     CHC VIEW — human capital due diligence
+============================================================ -->
+<main id="view-chc" class="view">
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">CHC Platform &nbsp;·&nbsp; Private Equity Due Diligence</div>
+    <h1 class="hero-title">The certificate<br>that answers the<br>question no one<br><em>asks.</em></h1>
+    <p class="hero-body">
+      Human capital is the largest driver of value in a buyout — and the least quantified
+      input in a deal memo. The Cultural Health Certificate (CHC) Platform proposes a
+      structured diagnostic framework that converts workforce risk signals into a
+      composite score, delivered as a data-room artefact before close.
+    </p>
+    <div class="hero-actions">
+      <button class="btn btn-ink" data-scroll-to="c-framework">Read the Framework</button>
+      <button class="btn btn-outline" data-scroll-to="c-impact">Industry Impact</button>
+    </div>
+  </div>
+  <div class="hero-meta">
+    Quantamental Research<br>
+    Penn State University<br>
+    Private Equity · M&amp;A Due Diligence<br>
+    <span class="status-badge">Proposed · In Development</span>
+  </div>
+</div>
+
+<section id="c-problem">
+  <div class="sec-label">The Problem &nbsp;·&nbsp; Why Human Capital Fails Due Diligence</div>
+  <div class="approach-grid">
+    <div class="approach-col">
+      <h2>The question most<br>models don't <em>ask.</em></h2>
+      <p>
+        Private equity due diligence is rigorous where data is structured — financials,
+        legal, tax, customer concentration. It becomes qualitative and unverifiable
+        precisely where the risk is highest: the people running the business.
+      </p>
+      <p>
+        Management consulting firms have documented this gap for decades.
+        <strong>Two-thirds of post-merger integration failures are attributed to culture
+        and workforce issues</strong>, yet most deal memos allocate fewer than two pages
+        to human capital — typically a brief management bio section.
+      </p>
+      <p>
+        The core problem is not that buyers ignore workforce health. It is that no
+        structured, scoreable, comparable instrument exists to assess it. This framework
+        proposes one.
+      </p>
+      <div class="footnote">McKinsey · Korn Ferry · Deloitte Insights · Harvard Business Review</div>
+    </div>
+    <div class="approach-col">
+      <h2>Why private<br><em>mid-market?</em></h2>
+      <p>
+        Large-cap public targets have Glassdoor data, 10-K disclosures, analyst coverage,
+        and LinkedIn headcount signals. They are far from easy to assess — but the signals
+        exist.
+      </p>
+      <p>
+        Private companies with $50M–$500M EBITDA — the core of the middle market — have
+        almost none of this. No EDGAR filings. No Glassdoor depth. No public attrition
+        data. PE sponsors acquiring these companies are pricing workforce risk with almost
+        no structured input.
+      </p>
+      <p>
+        This is the segment where the CHC Platform concentrates. The data architecture
+        is built specifically for the constraints of private, mid-market targets: it
+        anchors on <strong>public-record signals and primary survey data</strong> collected
+        during diligence, rather than requiring historical disclosures the target has never
+        made.
+      </p>
+      <div class="footnote">Mid-market: $50M–$500M EBITDA · ~$400–600B annual US PE volume (Pitchbook 2022–2024)</div>
+    </div>
+  </div>
+</section>
+
+<section id="c-framework">
+  <div class="sec-label">Framework &nbsp;·&nbsp; The Five-Component HCV Index</div>
+  <div style="margin-bottom:40px;max-width:680px">
+    <p style="font-size:16px;line-height:1.85;color:var(--ash)">
+      The Human Capital Volatility (HCV) Index is the quantitative core of the CHC
+      Platform. It produces a single composite score — bounded 0 to 1 — from five
+      independent sub-components, each sourced from a different data layer. The score is
+      sector-normalised against published industry benchmarks to enable cross-deal
+      comparability.
+    </p>
+  </div>
+  <div class="cell-grid cols-5">
+    <div class="cell">
+      <div class="cell-code">TDS</div>
+      <div class="cell-title">Tenure &amp; Departure<br><em>Signal</em></div>
+      <div class="cell-body">Encodes workforce seniority distribution and departure velocity from primary survey responses, weighted by role tier and functional criticality.</div>
+      <div class="cell-tag">Weight: 20%</div>
+    </div>
+    <div class="cell">
+      <div class="cell-code">BDR</div>
+      <div class="cell-title">Business Disruption<br><em>Risk</em></div>
+      <div class="cell-body">Integrates passive external signals — job posting velocity, WARN Act notices, OSHA citations — into a market-observable disruption indicator. WARN Act notice triggers a hard score floor.</div>
+      <div class="cell-tag">Weight: 25%</div>
+    </div>
+    <div class="cell">
+      <div class="cell-code">SDS</div>
+      <div class="cell-title">Survey-Derived<br><em>Signal</em></div>
+      <div class="cell-body">Anonymised primary survey data from a stratified sample of target employees during diligence. Twelve validated questions across leadership trust, psychological safety, and intent-to-stay dimensions.</div>
+      <div class="cell-tag">Weight: 25%</div>
+    </div>
+    <div class="cell">
+      <div class="cell-code">VGS</div>
+      <div class="cell-title">Velocity &amp; Growth<br><em>Signal</em></div>
+      <div class="cell-body">Structural growth indicators — headcount trajectory, role expansion ratios, hiring pattern analysis — normalised by sector baseline and company stage.</div>
+      <div class="cell-tag">Weight: 15%</div>
+    </div>
+    <div class="cell">
+      <div class="cell-code">MCS</div>
+      <div class="cell-title">Market Comparator<br><em>Signal</em></div>
+      <div class="cell-body">Sector peer benchmarking via employment litigation records (PACER), executive departure events, and public peer-group comparator data to contextualise absolute scores.</div>
+      <div class="cell-tag">Weight: 15%</div>
+    </div>
+  </div>
+
+  <div class="approach-grid" style="margin-top:64px">
+    <div class="approach-col">
+      <h2>Output: the<br><em>CHC Report</em></h2>
+      <p>
+        The platform produces a Cultural Health Certificate — a PDF artefact suitable for
+        insertion into an M&amp;A data room alongside financial and legal due diligence
+        reports.
+      </p>
+      <p>
+        The report presents the composite HCV score, each sub-component with its
+        contributing signals, a four-tier risk classification (GREEN / YELLOW / ORANGE /
+        RED), sector-relative percentile placement, and a narrative flag section
+        summarising material risks for the deal team.
+      </p>
+      <p>
+        The sell-side deployment model means the target company commissions the CHC during
+        deal prep — typically 60–90 days before marketing — and includes it in the
+        Virtual Data Room. Investment banks advising the process become the primary
+        distribution channel.
+      </p>
+      <div class="footnote">Report: WeasyPrint / Jinja2 · Delivery: authenticated link · Turnaround: 72h from survey close</div>
+    </div>
+    <div class="approach-col">
+      <h2>What the score<br><em>does not do.</em></h2>
+      <p>
+        The HCV Index is explicitly a <strong>descriptive diagnostic</strong>, not a
+        predictive model. It does not claim to forecast post-close turnover rates or
+        EBITDA impact with precision.
+      </p>
+      <p>
+        The framework makes a narrower, more defensible claim: that a structured,
+        multi-signal composite score provides better due diligence coverage than
+        unstructured management interviews alone — and produces a comparable, archivable
+        record of the assessment.
+      </p>
+      <p>
+        Component weights draw on published practitioner literature (Korn Ferry Human
+        Capital M&amp;A research, Deloitte Human Capital Trends, Mercer workforce risk
+        indices) and are designed to be recalibrated as engagement data accumulates.
+      </p>
+      <div class="footnote">Not a financial instrument · Not investment advice · Score is informational input</div>
+    </div>
+  </div>
+</section>
+
+<div class="sources-dark" id="c-signals">
+  <div class="sec-label">Data Architecture &nbsp;·&nbsp; Signal Sources</div>
+  <div class="sources-grid">
+    <div class="source-cell">
+      <div class="src-type">Primary · Survey</div>
+      <div class="src-name">Employee<br><em>Survey</em></div>
+      <div class="src-desc">Pseudonymised 12-question survey deployed to a stratified sample of target employees via single-use UUID tokens. No PII stored. AES-256-GCM encrypted at rest.</div>
+    </div>
+    <div class="source-cell">
+      <div class="src-type">Public Record · Federal</div>
+      <div class="src-name">WARN<br><em>Act Notices</em></div>
+      <div class="src-desc">Worker Adjustment and Retraining Notification (WARN) Act filings. Publicly reported mass layoff and plant closing notices. Triggers BDR hard floor when present.</div>
+    </div>
+    <div class="source-cell">
+      <div class="src-type">Public Record · Federal</div>
+      <div class="src-name">OSHA &amp;<br><em>PACER Records</em></div>
+      <div class="src-desc">OSHA enforcement records and PACER federal court employment litigation dockets. Both are free public data with structured query access. No proprietary data required.</div>
+    </div>
+    <div class="source-cell">
+      <div class="src-type">Passive · Market</div>
+      <div class="src-name">Job Posting<br><em>History</em></div>
+      <div class="src-desc">Historical job posting velocity and pattern analysis via Apify web infrastructure. Available for any company that has ever posted publicly — the primary passive signal for private mid-market targets without Glassdoor depth.</div>
+    </div>
+  </div>
+</div>
+
+<section id="c-impact">
+  <div class="sec-label">Industry Impact &nbsp;·&nbsp; The Size of the Gap</div>
+  <div class="impact-grid">
+    <div class="impact-stat">
+      <div class="impact-val">73<em>%</em></div>
+      <div class="impact-label">M&amp;A Deals Fail to Achieve Synergies</div>
+      <div class="impact-desc">The fraction of mergers and acquisitions that fail to deliver projected value — the most cited figure in post-merger integration research, with human capital and cultural misalignment as leading explanatory variables.</div>
+      <div class="impact-cite">McKinsey &amp; Company · post-merger integration meta-analysis</div>
+    </div>
+    <div class="impact-stat">
+      <div class="impact-val">67<em>%</em></div>
+      <div class="impact-label">Failures Attributed to People &amp; Culture</div>
+      <div class="impact-desc">Of deals that miss their value creation thesis, the majority name human capital factors — management departure, cultural resistance, talent attrition — as primary or co-primary causes.</div>
+      <div class="impact-cite">Deloitte Human Capital M&amp;A Survey · Korn Ferry M&amp;A Research</div>
+    </div>
+    <div class="impact-stat">
+      <div class="impact-val">&lt;<em>5</em><span style="font-size:28px;font-style:normal">%</span></div>
+      <div class="impact-label">Deal Memos with Structured HC Assessment</div>
+      <div class="impact-desc">The estimated fraction of private equity deal memos that contain a structured, scoreable human capital assessment — versus a qualitative management biography section. The instrument does not yet exist at scale.</div>
+      <div class="impact-cite">HBR · Institutional Investor practitioner surveys</div>
+    </div>
+  </div>
+</section>
+
+<section id="c-validation">
+  <div class="sec-label">Framework Validation &nbsp;·&nbsp; Design Properties</div>
+  <div class="results-wrap">
+    <table>
+      <thead><tr><th>Property</th><th>Design Target</th><th>Implementation</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>HCV Score Range</td><td><span class="td-sub">0.0 – 1.0 bounded</span></td><td>Sigmoid normalisation over weighted sub-score · Sector-adjusted</td><td class="td-good">✓ Bounded</td></tr>
+        <tr><td>Risk Classification</td><td><span class="td-sub">4-tier: GREEN / YELLOW / ORANGE / RED</span></td><td>Monotone thresholds at 0.30 / 0.50 / 0.70</td><td class="td-good">✓ Implemented</td></tr>
+        <tr><td>WARN Act Hard Floor</td><td><span class="td-sub">BDR ≥ 0.75 on any WARN notice</span></td><td>Programmatic override in BDR computation · Cannot be suppressed</td><td class="td-good">✓ Enforced</td></tr>
+        <tr><td>Survey Anonymisation</td><td><span class="td-sub">No PII stored at any point</span></td><td>UUID4 tokens · No name/email linkage · AES-256-GCM encrypted</td><td class="td-good">✓ By design</td></tr>
+        <tr><td>Single-use Survey Tokens</td><td><span class="td-sub">Each respondent token: one submission</span></td><td>Token invalidated on first use · Duplicate submission returns 400</td><td class="td-good">✓ Enforced</td></tr>
+        <tr><td>Authenticated Encryption</td><td><span class="td-sub">Tamper detection on all stored data</span></td><td>AES-256-GCM · InvalidTag exception on any bit-flip · No silent corruption</td><td class="td-good">✓ GCM Mode</td></tr>
+        <tr><td>Sector Normalisation</td><td><span class="td-sub">Cross-sector comparability</span></td><td>Published benchmark means/stdevs (Manufacturing, Healthcare, SaaS/Tech, default)</td><td class="td-warn">In Progress</td></tr>
+        <tr><td>Component Weight Source</td><td><span class="td-sub">Grounded in literature</span></td><td>Korn Ferry, Deloitte, Mercer practitioner research · Recalibration on engagement data</td><td class="td-warn">Proposed</td></tr>
+        <tr><td>Private Company Data Coverage</td><td><span class="td-sub">Works without Glassdoor / 10-K</span></td><td>Job posting history (Apify) · WARN Act · OSHA · PACER · Primary survey</td><td class="td-good">✓ Public-record anchored</td></tr>
+        <tr><td>Report Delivery</td><td><span class="td-sub">Data-room ready PDF, 72-hr turnaround</span></td><td>WeasyPrint + Jinja2 pipeline · JWT-authenticated delivery link</td><td class="td-warn">In Development</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     SHARED CONTACT + FOOTER
+============================================================ -->
+<div class="contact" id="contact">
+  <div class="contact-left">
+    <h2>Research<br><em>correspondence.</em></h2>
+    <p>
+      For methodology questions, academic discussion, collaboration proposals, or to
+      request the full framework documentation and validation walkthrough. This is a
+      research portfolio — correspondence is welcome from anyone engaging seriously with
+      the work, including practitioners in private equity, investment banking, or human
+      capital consulting.
+    </p>
+  </div>
+  <div class="contact-right">
+    <div class="contact-label">Direct</div>
+    <a class="contact-email" href="mailto:pns5158@psu.edu">pns5158@psu.edu</a>
+    <a class="contact-email" href="mailto:prathamshah1056@gmail.com" style="font-size:16px;color:var(--ash)">prathamshah1056@gmail.com</a>
+    <div class="contact-note">
+      Subject lines: <em>Project Goldstein</em> for variance signal · <em>CHC Platform</em> for HCV framework.<br>
+      Penn State University · Smeal College of Business
+    </div>
+  </div>
+</div>
+
+<div class="footer-base">
+  <span class="footer-wordmark">SNP &nbsp;·&nbsp; Quantamental Research &nbsp;·&nbsp; Penn State University</span>
+  <span class="footer-legal">
+    Personal academic research portfolio &nbsp;·&nbsp; Not investment advice &nbsp;·&nbsp; Not a solicitation &nbsp;·&nbsp; No services offered &nbsp;·&nbsp;
+    Frameworks are informational research output and do not constitute investment advice under SEC Rule 202(a)(11).
+  </span>
+</div>
+
+<script>
+(function(){
+  const VIEWS=['home','goldstein','chc'];
+  function setView(name,push){
+    if(!VIEWS.includes(name)) name='home';
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    const el=document.getElementById('view-'+name);
+    if(el) el.classList.add('active');
+    document.querySelectorAll('[data-view]').forEach(b=>{
+      b.classList.toggle('is-active', b.dataset.view===name);
+    });
+    document.title = name==='home'
+      ? 'SNP · Research'
+      : name==='goldstein'
+        ? 'Project Goldstein — SNP · Research'
+        : 'CHC Platform — SNP · Research';
+    if(push) history.pushState({v:name}, '', '#'+name);
+    window.scrollTo({top:0,behavior:'instant' in window ? 'instant' : 'auto'});
+  }
+  function fromHash(){
+    const h=(location.hash||'').replace('#','').toLowerCase();
+    setView(VIEWS.includes(h)?h:'home', false);
+  }
+  document.addEventListener('click', e=>{
+    const v=e.target.closest('[data-view]');
+    if(v){ e.preventDefault(); setView(v.dataset.view, true); return; }
+    const s=e.target.closest('[data-scroll-to]');
+    if(s){
+      e.preventDefault();
+      const t=document.getElementById(s.dataset.scrollTo);
+      if(t) t.scrollIntoView({behavior:'smooth'});
+    }
+    const a=e.target.closest('a[data-scroll]');
+    if(a){
+      e.preventDefault();
+      const id=a.getAttribute('href').replace('#','');
+      const t=document.getElementById(id);
+      if(t) t.scrollIntoView({behavior:'smooth'});
+    }
+  });
+  window.addEventListener('popstate', fromHash);
+  fromHash();
+})();
+</script>
+
+</body>
+</html>
