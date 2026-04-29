@@ -534,31 +534,31 @@ tr:hover td{background:rgba(184,146,42,.04)}
       <div class="cell-code">TDS</div>
       <div class="cell-title">Tenure &amp; Departure<br><em>Signal</em></div>
       <div class="cell-body">Workforce seniority distribution and departure velocity from primary survey responses, weighted by role tier and functional criticality.</div>
-      <div class="cell-tag">Weight: 20%</div>
+      <div class="cell-tag">Dynamic Weight</div>
     </div>
     <div class="cell">
       <div class="cell-code">BDR</div>
       <div class="cell-title">Business Disruption<br><em>Risk</em></div>
       <div class="cell-body">Pulls in passive external signals (job posting velocity, WARN Act notices, OSHA citations) to build a market-observable disruption indicator. A WARN Act notice triggers a hard score floor.</div>
-      <div class="cell-tag">Weight: 25%</div>
+      <div class="cell-tag">Dynamic Weight</div>
     </div>
     <div class="cell">
       <div class="cell-code">SDS</div>
       <div class="cell-title">Survey-Derived<br><em>Signal</em></div>
       <div class="cell-body">Anonymised primary survey from a stratified sample of target employees during diligence. Twelve validated questions covering leadership trust, psychological safety, and intent to stay.</div>
-      <div class="cell-tag">Weight: 25%</div>
+      <div class="cell-tag">Dynamic Weight</div>
     </div>
     <div class="cell">
       <div class="cell-code">VGS</div>
       <div class="cell-title">Velocity &amp; Growth<br><em>Signal</em></div>
       <div class="cell-body">Structural growth indicators: headcount trajectory, role expansion ratios, hiring pattern analysis, normalised by sector baseline and company stage.</div>
-      <div class="cell-tag">Weight: 15%</div>
+      <div class="cell-tag">Dynamic Weight</div>
     </div>
     <div class="cell">
       <div class="cell-code">MCS</div>
       <div class="cell-title">Market Comparator<br><em>Signal</em></div>
       <div class="cell-body">Sector peer benchmarking through employment litigation records (PACER), executive departure events, and public peer-group data to put absolute scores in context.</div>
-      <div class="cell-tag">Weight: 15%</div>
+      <div class="cell-tag">Dynamic Weight</div>
     </div>
   </div>
 
@@ -660,9 +660,9 @@ tr:hover td{background:rgba(184,146,42,.04)}
     <table>
       <thead><tr><th>Property</th><th>Design Target</th><th>Implementation</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td>HCV Score Range</td><td><span class="td-sub">0.0 – 1.0 bounded</span></td><td>Sigmoid normalisation over weighted sub-score · Sector-adjusted</td><td class="td-good">✓ Bounded</td></tr>
-        <tr><td>Risk Classification</td><td><span class="td-sub">4-tier: GREEN / YELLOW / ORANGE / RED</span></td><td>Monotone thresholds at 0.30 / 0.50 / 0.70</td><td class="td-good">✓ Implemented</td></tr>
-        <tr><td>WARN Act Hard Floor</td><td><span class="td-sub">BDR ≥ 0.75 on any WARN notice</span></td><td>Programmatic override in BDR computation · Cannot be suppressed</td><td class="td-good">✓ Enforced</td></tr>
+        <tr><td>HCV Score Range</td><td><span class="td-sub">0.0 – 1.0 bounded</span></td><td>Proprietary normalisation over weighted sub-score · Sector-adjusted</td><td class="td-good">✓ Bounded</td></tr>
+        <tr><td>Risk Classification</td><td><span class="td-sub">4-tier: GREEN / YELLOW / ORANGE / RED</span></td><td>Proprietary monotone thresholds</td><td class="td-good">✓ Implemented</td></tr>
+        <tr><td>WARN Act Hard Floor</td><td><span class="td-sub">BDR floor trigger</span></td><td>Programmatic override in BDR computation · Cannot be suppressed</td><td class="td-good">✓ Enforced</td></tr>
         <tr><td>Survey Anonymisation</td><td><span class="td-sub">No PII stored at any point</span></td><td>UUID4 tokens · No name/email linkage · AES-256-GCM encrypted</td><td class="td-good">✓ By design</td></tr>
         <tr><td>Single-use Survey Tokens</td><td><span class="td-sub">Each respondent token: one submission</span></td><td>Token invalidated on first use · Duplicate submission returns 400</td><td class="td-good">✓ Enforced</td></tr>
         <tr><td>Authenticated Encryption</td><td><span class="td-sub">Tamper detection on all stored data</span></td><td>AES-256-GCM · InvalidTag exception on any bit-flip · No silent corruption</td><td class="td-good">✓ GCM Mode</td></tr>
